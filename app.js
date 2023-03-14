@@ -72,6 +72,6 @@ app.get('/api', async (req, res) => {
 	res.json({ url: 'api 1: .../login-user , api 2: .../register , api 3: .../userData' });
 });
 
-app.listen(5000, () => {
+app.listen(80, () => {
 	console.log('Server Started');
 });
