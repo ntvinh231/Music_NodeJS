@@ -68,7 +68,7 @@ app.post('/userData', async (req, res) => {
 	}
 });
 
-app.get('/api', async (req, res) => {
+app.get('/', async (req, res) => {
 	res.json({ url: 'api 1: .../login-user , api 2: .../register , api 3: .../userData' });
 });
 
