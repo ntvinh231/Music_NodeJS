@@ -51,23 +51,6 @@ app.post('/login-user', async (req, res) => {
 	res.json({ status: 'failed', error: 'Invalid Password' });
 });
 
-app.post('/userData', async (req, res) => {
-	const token = req.body.token;
-	try {
-		const user = jwt.verify(token, JWT_SECRET);
-		const useremail = user.email;
-		User2.findOne({ email: useremail })
-			.then((data) => {
-				res.send({ status: 'sucess', data: data });
-			})
-			.catch((error) => {
-				res.send({ status: 'failed', data: error });
-			});
-	} catch (error) {
-		console.log(error);
-	}
-});
-
 app.get('/', async (req, res) => {
 	res.json({ url: 'api 1: .../login-user , api 2: .../register , api 3: .../userData' });
 });
