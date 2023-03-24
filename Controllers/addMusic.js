@@ -1,22 +1,17 @@
 import User from '../Models/userModel.js';
 import Music from '../Models/musicModel.js';
-import jwt from 'jsonwebtoken';
 import httpError from 'http-errors';
-
-const ACCESS_TOKEN_SECRET = "7f302edb383631b8bfec2992cbfeddfb";
 
 export default async (request, response, next) => {
 
-    const accessToken = request.header('Authorization')?.split("Bearer ")[1];
     const { name, author, url, id, links: { images: [{ url: url1 }, { url: url2 }] } } = request.body;
-
     if (!name && !author && !url && !id && !url1 && !url2)
         return next(
             httpError(
                 400, "Bad Request."
             ));
 
-    const _id = await jwt.verify(accessToken, ACCESS_TOKEN_SECRET).id
+    const _id = request.userData.id
     const user = await User.findOne({ _id: _id });
     if (user) {
 

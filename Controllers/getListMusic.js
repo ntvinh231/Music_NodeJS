@@ -1,4 +1,5 @@
 import User from '../Models/userModel.js';
+import Music from '../Models/musicModel.js';
 import httpError from 'http-errors';
 
 export default async (request, response, next) => {
@@ -9,13 +10,12 @@ export default async (request, response, next) => {
                 httpError(
                     404, "User not found."
                 ));
-        }
+        };
+        
+        const list_music = await Music.find({ _id: { $in: user.list_music } });
         response.status(200).json({
             status: 200,
-            data: {
-                userID: user._id,
-                email: user.email
-            }
+            list_music: list_music
         });
     }
     catch (error) {

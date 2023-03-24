@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 //Connect to MongoDB
-Connect('mongodb+srv://vinh:123123aA@cluster0.uojtt91.mongodb.net/?retryWrites=true&w=majority');
+Connect('mongodb+srv://jiro203201:12312311LHL@linh.evzju5i.mongodb.net/?retryWrites=true&w=majority');
 
 //Use Router
 app.use('/api/users', userRouter);
@@ -31,7 +31,7 @@ app.use((error, request, response, next) => {
     response.status(
         error.status || 500
     );
-    response.send({
+    response.json({
         error: {
             status: error.status,
             message: error.message
