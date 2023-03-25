@@ -38,6 +38,6 @@ app.use((error, request, response, next) => {
 	});
 });
 
-app.listen(5000, () => {
+app.listen(80, () => {
 	console.log('Server started on port 80...');
 });
